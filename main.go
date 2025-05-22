@@ -10,12 +10,7 @@ import (
 	vegeta "github.com/tsenart/vegeta/v12/lib"
 )
 
-func main() {
-	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
-	// немного высшей математики: 40 req/min × 11 пользователей = 440 req/min
-	rate := vegeta.Rate{Freq: 440, Per: time.Minute}
-	dur := 10 * time.Minute
-
+func testForRate(log *slog.Logger, rate vegeta.Rate, dur time.Duration) {
 	var wg sync.WaitGroup
 	wg.Add(3)
 
@@ -66,4 +61,14 @@ func main() {
 		}()
 	}
 	wg.Wait()
+}
+
+func main() {
+	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
+	users := 11
+	req := 40
+	rate := vegeta.Rate{Freq: users * req, Per: time.Minute}
+	dur := time.Hour
+
+	testForRate(log, rate, dur)
 }
