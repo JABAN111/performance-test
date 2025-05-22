@@ -12,9 +12,9 @@ import (
 
 func main() {
 	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
-
+	// немного высшей математики: 40 req/min × 11 пользователей = 440 req/min
 	rate := vegeta.Rate{Freq: 440, Per: time.Minute}
-	dur := 1 * time.Minute
+	dur := 10 * time.Minute
 
 	var wg sync.WaitGroup
 	wg.Add(3)

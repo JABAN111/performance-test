@@ -51,6 +51,12 @@ create-csv:
 	done
 
 
+show-hist:
+	make create-html
+	make create-histograms
+	make create-reports
+	make create-csv
+	python main.py
 open-connection:
 	ssh -p 2222 \
       -L 18081:stload.se.ifmo.ru:8080 \
