@@ -14,7 +14,7 @@ func main() {
 	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 
 	rate := vegeta.Rate{Freq: 440, Per: time.Minute}
-	dur := 5 * time.Minute
+	dur := 1 * time.Minute
 
 	var wg sync.WaitGroup
 	wg.Add(3)
@@ -22,13 +22,11 @@ func main() {
 	for i := range 3 {
 		go func() {
 			defer wg.Done()
-			port := 18080 + i
-			url := fmt.Sprintf("http://localhost:%d/?token=495386773&user=-2104222730&config=%d", port, i)
+			port := 18081 + i
+			url := fmt.Sprintf("http://localhost:%d/?token=495386773&user=-2104222730&config=%d", port, i+1)
 			outputFile := fmt.Sprintf("perfomance-result/bins/load_config%d.bin", i)
 
-			log.Info(fmt.Sprintf("=== Конфигурация %d (порт %d) ===", i, port))
-			log.Info(fmt.Sprintf("URL: %s", url))
-			log.Info(fmt.Sprintf("Запуск Vegeta attack..."))
+			log.Info(fmt.Sprintf("Запуск Vegeta attack"), "Конфигурация", fmt.Sprintf("%d (порт %d)", i, port), "URL", url)
 
 			targeter := vegeta.NewStaticTargeter(vegeta.Target{Method: "GET", URL: url})
 
@@ -37,7 +35,12 @@ func main() {
 				log.Error(fmt.Sprintf("Не удалось создать файл %s: %v", outputFile, err))
 				return
 			}
-			defer f.Close()
+			defer func(f *os.File) {
+				err := f.Close()
+				if err != nil {
+					panic(err)
+				}
+			}(f)
 
 			enc := vegeta.NewEncoder(f)
 
@@ -54,12 +57,12 @@ func main() {
 			}
 			metrics.Close()
 
-			log.Info(fmt.Sprintf("--- Итоги для конфигурации %d ---", i))
-			log.Info(fmt.Sprintf("Requests: %d", metrics.Requests))
-			log.Info(fmt.Sprintf("Success rate: %.2f%%", metrics.Success*100))
-			log.Info(fmt.Sprintf("P95 latency: %s", metrics.Latencies.P95))
-			log.Info(fmt.Sprintf("Errors: %d", len(metrics.Errors)))
-			log.Info(fmt.Sprintf("Результат сохранён в %s", outputFile))
+			log.Info(fmt.Sprintf("Итоги для конфигурации %d", i),
+				"Requests:", metrics.Requests,
+				"Success rate", fmt.Sprintf("%.2f%%", metrics.Success*100),
+				"P95 latency", fmt.Sprintf("%s", metrics.Latencies.P95),
+				"Errors", len(metrics.Errors),
+				"Результат сохранён", outputFile)
 		}()
 	}
 	wg.Wait()
