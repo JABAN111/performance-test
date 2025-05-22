@@ -23,6 +23,34 @@ create-html-config2:
               -title="Config2" \
               load_config2.bin \
               > ../html/config2.html
+
+create-histograms:
+	mkdir -p perfomance-result/histograms
+	cd perfomance-result && \
+	for f in bins/load_config*.bin; do \
+	  base=$$(basename $$f .bin); \
+	  vegeta report \
+		-type=hist\[0,100ms,200ms,300ms,400ms,500ms,600ms,670ms,1s\] \
+		$$f > histograms/$${base}_latency_hist.txt; \
+	done
+create-reports:
+	mkdir -p perfomance-result/reports
+	cd perfomance-result && \
+	for f in bins/load_config*.bin; do \
+	  base=$$(basename $$f .bin); \
+	  vegeta report -type=json $$f | jq . > reports/$${base}.json; \
+	done
+create-csv:
+	echo "config,mean_req_per_s" > perfomance-result/mean_throughput.csv
+
+	cd perfomance-result && \
+	for f in reports/*.json; do \
+	  base=$$(basename $$f .json); \
+	  mean=$$(jq .throughput $$f); \
+	  echo "$${base},$${mean}" >> mean_throughput.csv; \
+	done
+
+
 open-connection:
 	ssh -p 2222 \
       -L 18081:stload.se.ifmo.ru:8080 \
