@@ -1,0 +1,156 @@
+{
+  "time": "2025-05-23T10:24:58.680509+03:00",
+  "level": "INFO",
+  "msg": "Запуск Vegeta attack",
+  "Конфигурация": "2 (порт 18083)",
+  "URL": "http://localhost:18083/?token=495386773&user=-2104222730&config=3"
+}
+{
+  "time": "2025-05-23T10:39:59.326331+03:00",
+  "level": "INFO",
+  "msg": "Итоги для конфигурации 3",
+  "Frequency": 440,
+  "Mean": 664266034,
+  "Requests:": 6600,
+  "Success rate": "100.00%",
+  "P95 latency": "670.063565ms",
+  "Errors": 0
+},
+{
+"time": "2025-05-23T10:39:59.326472+03:00",
+"level": "INFO",
+"msg": "Запуск Vegeta attack",
+"Конфигурация": "2 (порт 18083)",
+"URL": "http://localhost:18083/?token=495386773&user=-2104222730&config=3"
+},
+{
+"time": "2025-05-23T10:55:00.127724+03:00",
+"level": "INFO",
+"msg": "Итоги для конфигурации 3",
+"Frequency": 880,
+"Mean": 766989533,
+"Requests:": 13200,
+"Success rate": "100.00%",
+"P95 latency": "777.958819ms",
+"Errors": 0
+},
+{
+"time": "2025-05-23T10:55:00.127907+03:00",
+"level": "INFO",
+"msg": "Запуск Vegeta attack",
+"Конфигурация": "2 (порт 18083)",
+"URL": "http://localhost:18083/?token=495386773&user=-2104222730&config=3"
+},
+{
+"time": "2025-05-23T11:13:30.350867+03:00",
+"level": "INFO",
+"msg": "Итоги для конфигурации 3",
+"Frequency": 1760,
+"Mean": 9591207483,
+"Requests:": 26400,
+"Success rate": "83.71%",
+"P95 latency": "29.200505802s",
+"Errors": 480
+},
+{
+"time": "2025-05-23T11:13:30.350965+03:00",
+"level": "INFO",
+"msg": "Запуск Vegeta attack",
+"Конфигурация": "2 (порт 18083)",
+"URL": "http://localhost:18083/?token=495386773&user=-2104222730&config=3"
+},
+{
+"time": "2025-05-23T11:30:07.234522+03:00",
+"level": "INFO",
+"msg": "Итоги для конфигурации 3",
+"Frequency": 3520,
+"Mean": 27154184216,
+"Requests:": 52800,
+"Success rate": "18.41%",
+"P95 latency": "30.004913801s",
+"Errors": 1957
+},
+{
+"time": "2025-05-23T11:30:07.234623+03:00",
+"level": "INFO",
+"msg": "Запуск Vegeta attack",
+"Конфигурация": "2 (порт 18083)",
+"URL": "http://localhost:18083/?token=495386773&user=-2104222730&config=3"
+},
+{
+"time": "2025-05-23T11:46:13.427117+03:00",
+"level": "INFO",
+"msg": "Итоги для конфигурации 3",
+"Frequency": 7040,
+"Mean": 18956528117,
+"Requests:": 105600,
+"Success rate": "9.55%",
+"P95 latency": "30.003300773s",
+"Errors": 17972
+},
+{
+"time": "2025-05-23T11:46:13.427364+03:00",
+"level": "INFO",
+"msg": "Запуск Vegeta attack",
+"Конфигурация": "2 (порт 18083)",
+"URL": "http://localhost:18083/?token=495386773&user=-2104222730&config=3"
+},
+{
+"time": "2025-05-23T12:27:43.875772+03:00",
+"level": "INFO",
+"msg": "Итоги для конфигурации 3",
+"Frequency": 14080,
+"Mean": 11622148777,
+"Requests:": 211200,
+"Success rate": "4.49%",
+"P95 latency": "30.001781889s",
+"Errors": 22281
+},
+{
+"time": "2025-05-23T12:27:43.875849+03:00",
+"level": "INFO",
+"msg": "start reading results"
+},
+{
+"time": "2025-05-23T12:27:43.875886+03:00",
+"level": "INFO",
+"msg": "result got",
+"freq": 440,
+"mean": 664266034
+},
+{
+"time": "2025-05-23T12:27:43.87589+03:00",
+"level": "INFO",
+"msg": "result got",
+"freq": 880,
+"mean": 766989533
+},
+{
+"time": "2025-05-23T12:27:43.875892+03:00",
+"level": "INFO",
+"msg": "result got",
+"freq": 1760,
+"mean": 9591207483
+},
+{
+"time": "2025-05-23T12:27:43.875894+03:00",
+"level": "INFO",
+"msg": "result got",
+"freq": 3520,
+"mean": 27154184216
+},
+{
+"time": "2025-05-23T12:27:43.8759+03:00",
+"level": "INFO",
+"msg": "result got",
+"freq": 7040,
+"mean": 18956528117
+},
+{
+"time": "2025-05-23T12:27:43.875901+03:00",
+"level": "INFO",
+"msg": "result got",
+"freq": 14080,
+"mean": 11622148777
+}
+

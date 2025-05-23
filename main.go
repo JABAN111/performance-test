@@ -125,7 +125,7 @@ func main() {
 	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 	users := 11
 	req := 40
-	dur := 15 * time.Minute
+	dur := time.Hour
 	AttackSecondConfig(log, dur)
 
 	rate := vegeta.Rate{Freq: users * req, Per: time.Minute}
